@@ -3,7 +3,7 @@ package org.lab4.Cages;
 import org.lab4.Animals.Animal;
 import org.lab4.Animals.Lion;
 
-public class LionCage extends MammalCage {
+public class LionCage extends MammalCage<Lion> {
     public LionCage(int maxCapacity) {
         super(maxCapacity);
     }

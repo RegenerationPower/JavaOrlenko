@@ -21,7 +21,7 @@ public class Main {
             birdCage.removeAnimal(eagle);
             birdCage.addAnimal(eagle2);
             lionCage.addAnimal(lion);
-            //lionCage.addAnimal(giraffe);
+            birdCage.addAnimal(giraffe);
             hoofedCage.addAnimal(zebra);
             hoofedCage.addAnimal(zebra2);
 

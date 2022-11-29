@@ -22,10 +22,23 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ShapesModel model = new ShapesModel(createShapes());
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter file name to scan from or leave line empty: ");
+        String inputFilename = scanner.nextLine();
+        ArrayList<Shape> shapes;
+        if (inputFilename.equals("")) {
+            shapes = createShapes();
+        } else {
+            try {
+                shapes = Shape.readArrayListFromFile(inputFilename);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+                return;
+            }
+        }
+        ShapesModel model = new ShapesModel(shapes);
         ShapesView view = new ShapesView();
         ShapesController controller = new ShapesController(model, view);
-        Scanner scanner = new Scanner(System.in);
         controller.printSumOfAllAreas();
         System.out.println("\n\tEnter shape to calculate its area sum (circle, triangle, rectangle): ");
         String shapesCalculateArea = scanner.nextLine();
@@ -42,12 +55,21 @@ public class Main {
         String shapeIndex = scanner.nextLine();
         System.out.println("\n\tDraw " + shapeIndex + " element:");
         controller.draw(shapeIndex);
+        System.out.print("Enter file name to save to or leave line empty: ");
+        String outputFilename = scanner.nextLine();
+        if (!outputFilename.equals("")) {
+            try {
+                Shape.writeArrayListToFile(shapes, outputFilename);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
     }
 
     private static ArrayList<Shape> createShapes() {
         return new ArrayList<>(Arrays.asList(
-                new Circle("white", 2),
-                new Circle("black", 3),
+               new Circle("white", 2)));
+                /*new Circle("black", 3),
                 new Circle("yellow", 4),
                 new Circle("green", 5),
                 new Triangle("red", 2, 3, 4),
@@ -57,6 +79,6 @@ public class Main {
                 new Rectangle("cyan", 2, 3),
                 new Rectangle("pink", 4, 5),
                 new Rectangle("brown", 6, 7),
-                new Rectangle("gray", 8, 9)));
+                new Rectangle("gray", 8, 9)));*/
     }
 }
