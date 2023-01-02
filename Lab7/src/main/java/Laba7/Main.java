@@ -11,10 +11,11 @@ package Laba7;
 import java.util.Arrays;
 import java.util.Scanner;
 
+@SuppressWarnings("MismatchedReadAndWriteOfArray")
 public class Main {
-
+    static PrintingImpl printingImpl = new PrintingImpl();
     public static void main(String[] args) {
-
+        long startTime = System.currentTimeMillis();
         Scanner in = new Scanner(System.in);
         System.out.print("Input your text: ");
         String text = in.nextLine();
@@ -30,8 +31,10 @@ public class Main {
         }
         else {
             System.out.print("English words with equal number of vowels and consonants: \n");
-            Arrays.stream(result).forEach(res -> System.out.println(res));
+            Arrays.stream(result).forEach(System.out::println);
+            printingImpl.printing("Lab finished");
         }
+        System.out.println("Execution time + your input time: " + calculateTime(startTime) + "ms");
     }
 
     public static String[] findEnglishWords(String text) {
@@ -48,7 +51,8 @@ public class Main {
             System.out.println("There aren't any English words");
         }
         else {
-            System.out.println("English words: " + englishWords);
+            Printing printing1 = printed -> "English words: " + printed;
+            System.out.println(printing1.printing(String.valueOf(englishWords)));
         }
 
         String[] englishWordsArr = englishWords.toString().split("\\s");
@@ -67,5 +71,14 @@ public class Main {
             }
         }
         return resultStr.toString().split("\\s");
+
+    }
+    public static long calculateTime(long startTime) {
+        Subtraction<Long> subtraction1 = Main::subtraction;
+        return subtraction1.subtraction(System.currentTimeMillis(), startTime);
+    }
+
+    private static long subtraction(Long a, Long b) {
+        return a - b;
     }
 }

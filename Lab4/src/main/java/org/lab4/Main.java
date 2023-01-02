@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         BirdCage birdCage = new BirdCage(1);
         LionCage lionCage = new LionCage(2);
-        HoofedCage hoofedCage = new HoofedCage(3);
+        HoofedCage hoofedCage = new HoofedCage(1);
 
         Eagle eagle = new Eagle("Eagle1", 500, 15.7);
         Eagle eagle2 = new Eagle("Eagle2", 550, 14.2);
@@ -21,7 +21,7 @@ public class Main {
             birdCage.removeAnimal(eagle);
             birdCage.addAnimal(eagle2);
             lionCage.addAnimal(lion);
-            birdCage.addAnimal(giraffe);
+            //ionCage.addAnimal(giraffe);
             hoofedCage.addAnimal(zebra);
             hoofedCage.addAnimal(zebra2);
 

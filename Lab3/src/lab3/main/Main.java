@@ -69,7 +69,7 @@ public class Main {
     private static ArrayList<Shape> createShapes() {
         return new ArrayList<>(Arrays.asList(
                new Circle("white", 2)));
-                /*new Circle("black", 3),
+/*                new Circle("black", 3),
                 new Circle("yellow", 4),
                 new Circle("green", 5),
                 new Triangle("red", 2, 3, 4),
